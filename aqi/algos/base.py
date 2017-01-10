@@ -75,6 +75,11 @@ class PiecewiseAQI(BaseAQI):
                 break
             idx += 1
         # get corresponding AQI boundaries
+        if idx >= len(self.piecewise['aqi']):
+            idx = len(self.piecewise['aqi']) - 1
+            bplo = bps[-1][0]
+            bphi = bps[-1][1]
+
         (aqilo, aqihi) = self.piecewise['aqi'][idx]
 
         # equation
